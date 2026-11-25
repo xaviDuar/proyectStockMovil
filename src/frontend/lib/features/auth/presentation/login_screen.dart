@@ -95,17 +95,18 @@ class _LoginScreenState extends State<LoginScreen> {
                     '¿CUÁNDO VENCE?',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: 13,
-                      fontWeight: FontWeight.bold,
+                      fontFamily: AppTheme.headingFontFamily,
+                      fontSize: 24,
+                      fontWeight: FontWeight.w400,
                       color: AppColors.bright,
-                      letterSpacing: 1.5,
+                      letterSpacing: 0.5,
                     ),
                   ),
                   const SizedBox(height: 6),
                   const Text(
                     'CONTROL DE STOCK',
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 7.5, color: AppColors.muted),
+                    style: TextStyle(fontSize: 14, color: AppColors.muted),
                   ),
                   const SizedBox(height: 44),
                   const _Etiqueta('USUARIO'),
@@ -115,7 +116,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     enabled: !verificando,
                     autocorrect: false,
                     textInputAction: TextInputAction.next,
-                    style: const TextStyle(fontSize: 9, color: AppColors.text),
+                    style: const TextStyle(fontSize: 16, color: AppColors.text),
                     decoration: const InputDecoration(
                       hintText: 'Tu usuario',
                       prefixIcon: Icon(Icons.person_outline, size: 19),
@@ -130,7 +131,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     obscureText: _ocultarContrasena,
                     textInputAction: TextInputAction.done,
                     onSubmitted: (_) => verificando ? null : _enviar(),
-                    style: const TextStyle(fontSize: 9, color: AppColors.text),
+                    style: const TextStyle(fontSize: 16, color: AppColors.text),
                     decoration: InputDecoration(
                       hintText: 'Tu contraseña',
                       prefixIcon: const Icon(Icons.lock_outline, size: 18),
@@ -179,7 +180,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   const Text(
                     'ACCESO PARA PERSONAL AUTORIZADO',
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 7, color: AppColors.muted),
+                    style: TextStyle(fontSize: 12, color: AppColors.muted),
                   ),
                 ],
               ),
@@ -201,8 +202,8 @@ class _Etiqueta extends StatelessWidget {
     return Text(
       texto,
       style: const TextStyle(
-        fontSize: 8,
-        fontWeight: FontWeight.bold,
+        fontSize: 14,
+        fontWeight: FontWeight.w600,
         color: AppColors.text,
         letterSpacing: 1,
       ),
@@ -227,7 +228,7 @@ class _PanelMensaje extends StatelessWidget {
           : AppColors.soft,
       child: Text(
         mensaje,
-        style: TextStyle(fontSize: 8.5, color: color),
+        style: TextStyle(fontSize: 14, color: color),
       ),
     );
   }

@@ -38,10 +38,10 @@ class HomeScreen extends StatelessWidget {
                     const Text(
                       'ACCESOS RÁPIDOS',
                       style: TextStyle(
-                        fontSize: 8.5,
-                        fontWeight: FontWeight.bold,
+                        fontFamily: AppTheme.headingFontFamily,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w400,
                         color: AppColors.bright,
-                        letterSpacing: 1,
                       ),
                     ),
                     const SizedBox(height: 12),
@@ -91,16 +91,16 @@ class _Encabezado extends StatelessWidget {
               Text(
                 'INICIO',
                 style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
+                  fontFamily: AppTheme.headingFontFamily,
+                  fontSize: 20,
+                  fontWeight: FontWeight.w400,
                   color: AppColors.text,
-                  letterSpacing: 1,
                 ),
               ),
               SizedBox(height: 3),
               Text(
                 'PANEL PRINCIPAL',
-                style: TextStyle(fontSize: 7.6, color: AppColors.muted),
+                style: TextStyle(fontSize: 13, color: AppColors.muted),
               ),
             ],
           ),
@@ -151,14 +151,14 @@ class _TarjetaBienvenida extends StatelessWidget {
                   children: [
                     const Text(
                       'HOLA,',
-                      style: TextStyle(fontSize: 9, color: AppColors.muted),
+                      style: TextStyle(fontSize: 14, color: AppColors.muted),
                     ),
                     const SizedBox(height: 4),
                     Text(
                       nombre.toUpperCase(),
                       style: const TextStyle(
-                        fontSize: 13,
-                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
                         color: AppColors.text,
                       ),
                     ),
@@ -166,7 +166,7 @@ class _TarjetaBienvenida extends StatelessWidget {
                     Text(
                       local,
                       style: const TextStyle(
-                        fontSize: 7.2,
+                        fontSize: 14,
                         color: AppColors.bright,
                       ),
                     ),
@@ -179,7 +179,7 @@ class _TarjetaBienvenida extends StatelessWidget {
           const SizedBox(height: 16),
           const Text(
             'TU STOCK, BAJO CONTROL',
-            style: TextStyle(fontSize: 7.2, color: AppColors.muted),
+            style: TextStyle(fontSize: 14, color: AppColors.muted),
           ),
         ],
       ),
@@ -258,7 +258,7 @@ class _GridAccesosRapidos extends StatelessWidget {
       physics: const NeverScrollableScrollPhysics(),
       mainAxisSpacing: 14,
       crossAxisSpacing: 14,
-      childAspectRatio: 170 / 91,
+      childAspectRatio: 170 / 112,
       children: [
         for (final acceso in accesos)
           _TarjetaAcceso(
@@ -290,7 +290,7 @@ class _TarjetaAcceso extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Container(
-        padding: const EdgeInsets.all(14),
+        padding: const EdgeInsets.all(8),
         decoration: BoxDecoration(
           color: AppColors.surface,
           border: Border.all(color: AppColors.borderLight),
@@ -298,46 +298,38 @@ class _TarjetaAcceso extends StatelessWidget {
         child: Row(
           children: [
             Container(
-              width: 49,
-              height: 49,
+              width: 40,
+              height: 40,
               decoration: BoxDecoration(
                 color: AppColors.bg,
                 border: Border.all(color: AppColors.borderLight),
               ),
               child: Icon(acceso.icono, size: 22, color: AppColors.bright),
             ),
-            const SizedBox(width: 11),
+            const SizedBox(width: 6),
             Expanded(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Flexible(
-                    child: FittedBox(
-                      fit: BoxFit.scaleDown,
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        acceso.titulo,
-                        style: const TextStyle(
-                          fontSize: 10.5,
-                          fontWeight: FontWeight.bold,
-                          color: AppColors.text,
-                        ),
-                      ),
+                  Text(
+                    acceso.titulo,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.w600,
+                      color: AppColors.text,
                     ),
                   ),
-                  const SizedBox(height: 6),
-                  Flexible(
-                    child: FittedBox(
-                      fit: BoxFit.scaleDown,
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        acceso.texto,
-                        style: const TextStyle(
-                          fontSize: 8,
-                          color: AppColors.muted,
-                        ),
-                      ),
+                  const SizedBox(height: 4),
+                  Text(
+                    acceso.texto,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(
+                      fontSize: 12,
+                      color: AppColors.muted,
                     ),
                   ),
                 ],
@@ -368,21 +360,21 @@ class _Recordatorio extends StatelessWidget {
           Text(
             'RECORDATORIO',
             style: TextStyle(
-              fontSize: 7,
-              fontWeight: FontWeight.bold,
+              fontFamily: AppTheme.headingFontFamily,
+              fontSize: 16,
+              fontWeight: FontWeight.w400,
               color: AppColors.warning,
-              letterSpacing: 1,
             ),
           ),
           SizedBox(height: 8),
           Text(
             'Registrá el conteo al cierre del día.',
-            style: TextStyle(fontSize: 8.5, color: AppColors.text),
+            style: TextStyle(fontSize: 14, color: AppColors.text),
           ),
           SizedBox(height: 6),
           Text(
             'Un control diario evita faltantes.',
-            style: TextStyle(fontSize: 7.2, color: AppColors.muted),
+            style: TextStyle(fontSize: 12, color: AppColors.muted),
           ),
         ],
       ),
@@ -414,7 +406,7 @@ class _BarraNavegacion extends StatelessWidget {
       child: SafeArea(
         top: false,
         child: SizedBox(
-          height: 64,
+          height: 72,
           child: Row(
             children: [
               for (final item in items)
@@ -463,7 +455,7 @@ class _BotonNav extends StatelessWidget {
       onTap: onTap,
       child: Center(
         child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 4),
           color: activo ? AppColors.soft : Colors.transparent,
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -472,7 +464,7 @@ class _BotonNav extends StatelessWidget {
               const SizedBox(height: 6),
               Text(
                 item.etiqueta,
-                style: TextStyle(fontSize: 8, color: color),
+                style: TextStyle(fontSize: 12, color: color),
               ),
             ],
           ),

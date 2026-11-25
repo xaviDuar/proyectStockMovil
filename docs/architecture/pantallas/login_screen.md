@@ -24,6 +24,7 @@
 
 ## Notas
 
+- Tipografía: `DotGothic16` para el título de marca; `Inter` para subtítulo, campos, botones y mensajes. Los textos de lectura se mantienen entre 12 y 16sp.
 - Tres estados de error, igual que los mockups:
   - `00.2 campos vacíos` → panel `$soft` con texto en `$warning`: "Ingresá usuario y contraseña" (validación local, sin llamar al servicio).
   - `00.1 credenciales incorrectas` → panel `#321d25` con texto en `$danger`: "Usuario o contraseña incorrectos".

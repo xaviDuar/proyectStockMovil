@@ -31,7 +31,17 @@ flutter:
     - assets/images/mascot.png
 
   fonts:
-    - family: Workbench
+    - family: DotGothic16
       fonts:
-        - asset: assets/fonts/Workbench.ttf
-        - asset: assets/fonts/Workbench-ext.ttf
+        - asset: assets/fonts/DotGothic16-Regular.ttf
+          weight: 400
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/Inter-Variable.ttf
+          weight: 400
+        - asset: assets/fonts/Inter-Variable.ttf
+          weight: 500
+        - asset: assets/fonts/Inter-Variable.ttf
+          weight: 600
+        - asset: assets/fonts/Inter-Variable.ttf
+          weight: 700

@@ -18,14 +18,17 @@ class AppColors {
   static const dangerPanel = Color(0xFF321D25);
 }
 
-/// Tema oscuro de la app: fuente Workbench y esquinas rectas (estilo pixel del mockup).
+/// Tema oscuro de la app con tipografía legible y encabezados pixelados.
 class AppTheme {
   AppTheme._();
+
+  static const headingFontFamily = 'DotGothic16';
+  static const bodyFontFamily = 'Inter';
 
   static ThemeData get dark {
     final base = ThemeData(
       useMaterial3: true,
-      fontFamily: 'Workbench',
+      fontFamily: bodyFontFamily,
       scaffoldBackgroundColor: AppColors.bg,
       colorScheme: const ColorScheme.dark(
         primary: AppColors.accent,
@@ -37,18 +40,33 @@ class AppTheme {
       ),
       hintColor: AppColors.muted,
     );
+    final textTheme = base.textTheme.apply(
+      bodyColor: AppColors.text,
+      displayColor: AppColors.text,
+    );
+    final themedTextTheme = textTheme.copyWith(
+      displayLarge:
+          textTheme.displayLarge?.copyWith(fontFamily: headingFontFamily),
+      displayMedium:
+          textTheme.displayMedium?.copyWith(fontFamily: headingFontFamily),
+      displaySmall:
+          textTheme.displaySmall?.copyWith(fontFamily: headingFontFamily),
+      headlineLarge:
+          textTheme.headlineLarge?.copyWith(fontFamily: headingFontFamily),
+      headlineMedium:
+          textTheme.headlineMedium?.copyWith(fontFamily: headingFontFamily),
+      headlineSmall:
+          textTheme.headlineSmall?.copyWith(fontFamily: headingFontFamily),
+    );
 
     return base.copyWith(
-      textTheme: base.textTheme.apply(
-        bodyColor: AppColors.text,
-        displayColor: AppColors.text,
-      ),
+      textTheme: themedTextTheme,
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
         fillColor: AppColors.surface,
         isDense: true,
-        hintStyle: const TextStyle(fontSize: 9, color: AppColors.muted),
-        labelStyle: const TextStyle(fontSize: 9, color: AppColors.muted),
+         hintStyle: const TextStyle(fontSize: 14, color: AppColors.muted),
+         labelStyle: const TextStyle(fontSize: 14, color: AppColors.muted),
         prefixIconColor: AppColors.muted,
         suffixIconColor: AppColors.muted,
         contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 16),
@@ -75,8 +93,9 @@ class AppTheme {
           shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
           elevation: 0,
           textStyle: const TextStyle(
-            fontSize: 9,
-            fontWeight: FontWeight.bold,
+            fontFamily: bodyFontFamily,
+             fontSize: 14,
+            fontWeight: FontWeight.w700,
             letterSpacing: 1.2,
           ),
         ),
@@ -87,15 +106,16 @@ class AppTheme {
         elevation: 0,
         centerTitle: false,
         titleTextStyle: TextStyle(
-          fontSize: 13,
-          fontWeight: FontWeight.bold,
+          fontFamily: headingFontFamily,
+           fontSize: 18,
+          fontWeight: FontWeight.w400,
           color: AppColors.text,
         ),
         shape: Border(bottom: BorderSide(color: AppColors.border, width: 1)),
       ),
       snackBarTheme: const SnackBarThemeData(
         backgroundColor: AppColors.surface,
-        contentTextStyle: TextStyle(fontSize: 9, color: AppColors.text),
+         contentTextStyle: TextStyle(fontSize: 14, color: AppColors.text),
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
       ),

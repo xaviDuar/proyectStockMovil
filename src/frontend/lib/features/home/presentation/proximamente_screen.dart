@@ -23,23 +23,23 @@ class ProximamenteScreen extends StatelessWidget {
             const Text(
               'PRÓXIMAMENTE',
               style: TextStyle(
-                fontSize: 13,
-                fontWeight: FontWeight.bold,
+                fontFamily: AppTheme.headingFontFamily,
+                fontSize: 20,
+                fontWeight: FontWeight.w400,
                 color: AppColors.text,
-                letterSpacing: 1.5,
               ),
             ),
             const SizedBox(height: 8),
             const Text(
               'Esta pantalla todavía no está implementada.',
-              style: TextStyle(fontSize: 9, color: AppColors.muted),
+              style: TextStyle(fontSize: 14, color: AppColors.muted),
             ),
             const SizedBox(height: 24),
             TextButton(
               onPressed: () => Navigator.of(context).pop(),
               style: TextButton.styleFrom(
                 foregroundColor: AppColors.bright,
-                textStyle: const TextStyle(fontSize: 9),
+                textStyle: const TextStyle(fontSize: 14),
               ),
               child: const Text('VOLVER'),
             ),

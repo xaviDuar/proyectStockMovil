@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart' show FontLoader, rootBundle;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -15,6 +16,27 @@ void _tamanoTelefono(WidgetTester tester) {
   addTearDown(tester.view.reset);
 }
 
+bool _fuentesCargadas = false;
+
+Future<void> _cargarFuentes(WidgetTester tester) async {
+  if (_fuentesCargadas) return;
+  await tester.runAsync(_cargarFuentesLocales);
+  _fuentesCargadas = true;
+  await tester.pump();
+}
+
+Future<void> _cargarFuentesLocales() async {
+  final fuentes = {
+    'DotGothic16': 'assets/fonts/DotGothic16-Regular.ttf',
+    'Inter': 'assets/fonts/Inter-Variable.ttf',
+  };
+  for (final entry in fuentes.entries) {
+    final loader = FontLoader(entry.key)
+      ..addFont(rootBundle.load(entry.value));
+    await loader.load();
+  }
+}
+
 Future<void> _cargarMascota(WidgetTester tester) async {
   await tester.runAsync(() async {
     await precacheImage(
@@ -29,6 +51,7 @@ void main() {
   testWidgets('golden login', (tester) async {
     SharedPreferences.setMockInitialValues({});
     _tamanoTelefono(tester);
+    await _cargarFuentes(tester);
     await tester.pumpWidget(
       ChangeNotifierProvider(
         create: (_) => AuthProvider(
@@ -51,6 +74,7 @@ void main() {
 
   testWidgets('golden home', (tester) async {
     _tamanoTelefono(tester);
+    await _cargarFuentes(tester);
     await tester.pumpWidget(
       MaterialApp(
         theme: AppTheme.dark,

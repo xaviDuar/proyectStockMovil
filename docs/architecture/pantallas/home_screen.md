@@ -24,6 +24,7 @@
 
 ## Notas
 
+- Tipografía: `DotGothic16` para títulos de pantalla y secciones; `Inter` para saludos, tarjetas, descripciones y navegación, con tamaños auxiliares desde 12sp.
 - Estructura: encabezado (tile de marca + "INICIO / PANEL PRINCIPAL"), divisor, tarjeta de bienvenida (avatar + "HOLA, nombre + local" + campana con punto `$danger` + "TU STOCK, BAJO CONTROL"), grilla de 6 accesos rápidos, panel "RECORDATORIO" y navegación inferior.
 - Los 6 accesos rápidos y las pestañas **Conteo / Agregar / Perfil** (y la campana) abren `ProximamenteScreen` (`lib/features/home/presentation/proximamente_screen.dart`) hasta que cada pantalla exista. La pestaña **Home** está activa (tile `$soft`, ícono `$bright`).
 - Recibe `nombre` y `local` desde la sesión (`SessionService` o `AuthProvider`); no consulta la BD todavía.
