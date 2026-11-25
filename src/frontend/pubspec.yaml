@@ -1,0 +1,37 @@
+name: stock_movil
+description: "App móvil para controlar vencimientos, stock, conteo y desperdicio de las franquicias de cafetería."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.13.7
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+  provider: ^6.1.0           # Estado (architecture.md sección 6)
+  shared_preferences: ^2.2.0 # Sesión y usuario logueado (sección 7)
+  sqflite: ^2.4.1            # BD local SQLite — datos de negocio (sección 7)
+  sqflite_common_ffi: ^2.3.4 # SQLite en escritorio (Windows) y en tests
+  path: ^1.9.0               # join() para rutas de la BD
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/users.json
+    - assets/images/mascot.png
+
+  fonts:
+    - family: Workbench
+      fonts:
+        - asset: assets/fonts/Workbench.ttf
+        - asset: assets/fonts/Workbench-ext.ttf
