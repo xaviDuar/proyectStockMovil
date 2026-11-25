@@ -37,10 +37,10 @@ Future<void> _cargarFuentesLocales() async {
   }
 }
 
-Future<void> _cargarMascota(WidgetTester tester) async {
+Future<void> _cargarImagen(WidgetTester tester, String asset) async {
   await tester.runAsync(() async {
     await precacheImage(
-      const AssetImage('assets/images/mascot.png'),
+      AssetImage(asset),
       tester.element(find.byType(Scaffold)),
     );
   });
@@ -65,7 +65,7 @@ void main() {
       ),
     );
     await tester.pump();
-    await _cargarMascota(tester);
+    await _cargarImagen(tester, 'assets/images/logo.png');
     await expectLater(
       find.byType(Scaffold),
       matchesGoldenFile('goldens/login.png'),
@@ -85,7 +85,7 @@ void main() {
       ),
     );
     await tester.pump();
-    await _cargarMascota(tester);
+    await _cargarImagen(tester, 'assets/images/mascot.png');
     await expectLater(
       find.byType(Scaffold),
       matchesGoldenFile('goldens/home.png'),

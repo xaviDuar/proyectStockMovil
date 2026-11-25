@@ -29,6 +29,7 @@ flutter:
   assets:
     - assets/users.json
     - assets/images/mascot.png
+    - assets/images/logo.png
 
   fonts:
     - family: DotGothic16

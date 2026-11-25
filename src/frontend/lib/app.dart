@@ -33,7 +33,7 @@ class _PuertaSesion extends StatelessWidget {
     return FutureBuilder<Sesion?>(
       future: sesion.leerSesion(),
       builder: (context, snapshot) {
-        if (!snapshot.hasData) {
+        if (snapshot.connectionState != ConnectionState.done) {
           return const Scaffold(
             backgroundColor: AppColors.bg,
             body: Center(
